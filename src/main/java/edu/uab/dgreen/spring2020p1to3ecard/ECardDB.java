@@ -51,11 +51,11 @@ public class ECardDB {
    * Cancel the card matching the given UID. Ignore request if this card is
    * unknown or already canceled.
    *
-   * @param UID uid to match
+   * @param uid UID to match
    */
-  public void cancel(final long UID) {
+  public void cancel(final long uid) {
     for (int i = 0; i < numberRecords; i++) {
-      if (records[i].isMatch(UID)) {
+      if (records[i].isMatch(uid)) {
         records[i].cancel();
       }
     }

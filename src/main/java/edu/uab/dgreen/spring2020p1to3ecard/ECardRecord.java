@@ -13,7 +13,7 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  */
 public class ECardRecord {
 
-  private final long UID;           // unique code matching card
+  private final long uid;           // unique code matching card
   private final String displayName; // showable name of user
   private final String blazerID;    // userid
   private final int type;           // type code (see below for encoding)
@@ -29,7 +29,7 @@ public class ECardRecord {
    * 4 - employee, and where a visitor will have type = 0
    */
   public ECardRecord(ECard eCard, String displayName, String blazerID, int type) {
-    UID = eCard.getCode();
+    uid = eCard.getCode();
     this.displayName = displayName;
     this.blazerID = blazerID;
     this.type = type;
@@ -44,7 +44,7 @@ public class ECardRecord {
    * @return true if match, false otherwise
    */
   public boolean isMatch(final ECard ecard) {
-    return ecard.getCode() == UID;
+    return ecard.getCode() == uid;
   }
 
   /**
@@ -54,7 +54,7 @@ public class ECardRecord {
    * @return true if match, false otherwise
    */
   public boolean isMatch(final long code) {
-    return code == UID;
+    return code == uid;
   }
 
   /**
