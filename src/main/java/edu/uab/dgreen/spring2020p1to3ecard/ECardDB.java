@@ -1,7 +1,7 @@
 /*
  * File: ECardDB.java
  * Author: David G. Green dgreen@uab.edu
- * Assignment:  spring2020p1to3ecard - EE333 Fall 2020
+ * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
 package edu.uab.dgreen.spring2020p1to3ecard;
@@ -12,12 +12,12 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  * @author David G. Green dgreen@uab.edu
  */
 public class ECardDB {
-    
+
     private static final int MAX_RECORDS = 100;
 
     private ECardRecord records[];
     private int numberRecords;
-    
+
     /**
      * Make an ECardDB object
      * Limited to MAX_RECORDS cards
@@ -40,7 +40,7 @@ public class ECardDB {
                 if (records[i].isCancelled()) {
                     return null;
                 } else {
-                    return records[i];                
+                    return records[i];
                 }
             }
         }
@@ -85,12 +85,12 @@ public class ECardDB {
      * @param blazerID user's id code
      * @param typeCode type of user based on adding values: 1 - student 2 -
      * faculty 4 - employee where a visitor will have typeCode 0
-     * 
+     *
      * @return ecard or null if no MAX_RECORDS ecards have already been issued
      */
     public ECard issueCard(final String displayName, final String blazerID,
             final int typeCode) {
-        
+
         if (numberRecords >= MAX_RECORDS) {
             return null;
         }

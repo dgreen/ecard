@@ -1,18 +1,18 @@
 /*
  * File: ECardRecord.java
  * Author: David G. Green dgreen@uab.edu
- * Assignment:  spring2020p1to3ecard - EE333 Fall 2020
+ * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 /**
  * Model a record associated with an ECard
- * 
+ *
  * @author David G. Green dgreen@uab.edu
  */
 public class ECardRecord {
-    
+
     private final long UID;           // unique code matching card
     private final String displayName; // showable name of user
     private final String blazerID;    // userid
@@ -65,10 +65,10 @@ public class ECardRecord {
     public String getDisplayName() {
         return displayName;
     }
-    
+
     /**
      * Get the blazerID of that corresponds to the eCard
-     * 
+     *
      * @return blazerID
      */
     public String getBlazerID() {
@@ -110,7 +110,7 @@ public class ECardRecord {
     public boolean isVisitor() {
         return type == 0;
     }
-    
+
     /**
      * Is this card cancelled?
      * @return true if cancelled, false otherwise
@@ -118,7 +118,7 @@ public class ECardRecord {
     public boolean isCancelled() {
         return cancelled;
     }
-    
+
     /**
      * Cancel card
      */

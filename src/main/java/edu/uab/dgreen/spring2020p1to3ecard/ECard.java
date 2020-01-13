@@ -12,7 +12,7 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  * @author David G. Green dgreen@uab.edu
  */
 public class ECard {
-    
+
     private static long counter = 1000000000L;
     private final long UID;
 
