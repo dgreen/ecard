@@ -4,17 +4,18 @@
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/12/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 /**
- * Test P1 for Spring 2020
+ * Test P1 for Spring 2020.
  *
  * @author David G. Green dgreen@uab.edu
  */
 public class TestP1 {
 
   /**
-   * Exercise program P1's objects
+   * Exercise program P1's objects.
    *
    * @param args command line arguments (unused)
    */

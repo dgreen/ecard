@@ -4,10 +4,11 @@
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 /**
- * Model a record associated with an ECard
+ * Model a record associated with an ECard.
  *
  * @author David G. Green dgreen@uab.edu
  */
@@ -20,16 +21,16 @@ public class ECardRecord {
   private boolean cancelled;   // code if card is cancelled
 
   /**
-   * Create an ECardRecord
+   * Create an ECardRecord.
    *
-   * @param eCard the matching card
+   * @param card the matching ECard
    * @param displayName the ready to show name of the card holder
    * @param blazerID the userid of the card holder
    * @param type type of user based on adding values: 1 - student, 2 - faculty,
-   * 4 - employee, and where a visitor will have type = 0
+   *     4 - employee, and where a visitor will have type = 0
    */
-  public ECardRecord(ECard eCard, String displayName, String blazerID, int type) {
-    uid = eCard.getCode();
+  public ECardRecord(ECard card, String displayName, String blazerID, int type) {
+    uid = card.getCode();
     this.displayName = displayName;
     this.blazerID = blazerID;
     this.type = type;
@@ -38,7 +39,7 @@ public class ECardRecord {
 
   // queries
   /**
-   * Determine whether the given eCard matches this record
+   * Determine whether the given eCard matches this record.
    *
    * @param ecard user's ECard
    * @return true if match, false otherwise
@@ -48,7 +49,7 @@ public class ECardRecord {
   }
 
   /**
-   * Determine whether the given eCard matches this record
+   * Determine whether the given eCard matches this record.
    *
    * @param code user's code
    * @return true if match, false otherwise
@@ -58,7 +59,7 @@ public class ECardRecord {
   }
 
   /**
-   * Get the display name that corresponds to the eCard
+   * Get the display name that corresponds to the eCard.
    *
    * @return display name or null
    */
@@ -67,7 +68,7 @@ public class ECardRecord {
   }
 
   /**
-   * Get the blazerID of that corresponds to the eCard
+   * Get the blazerID of that corresponds to the eCard.
    *
    * @return blazerID
    */
@@ -121,7 +122,7 @@ public class ECardRecord {
   }
 
   /**
-   * Cancel card
+   * Cancel card.
    */
   public void cancel() {
     cancelled = true;

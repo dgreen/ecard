@@ -4,10 +4,11 @@
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 /**
- * Model a system to issue cards, validate them, and provide info on owner
+ * Model a system to issue cards, validate them, and provide info on owner.
  *
  * @author David G. Green dgreen@uab.edu
  */
@@ -15,11 +16,11 @@ public class ECardDB {
 
   private static final int MAX_RECORDS = 100;
 
-  private ECardRecord records[];
+  private ECardRecord[] records;
   private int numberRecords;
 
   /**
-   * Make an ECardDB object Limited to MAX_RECORDS cards
+   * Make an ECardDB object Limited to MAX_RECORDS cards.
    */
   public ECardDB() {
     records = new ECardRecord[MAX_RECORDS];
@@ -28,7 +29,7 @@ public class ECardDB {
 
   // queries
   /**
-   * Determine whether the given eCard
+   * Determine whether the given eCard.
    *
    * @param ecard user's ECard
    * @return eCardRecord corresponding to the card if valid, null otherwise
@@ -78,12 +79,12 @@ public class ECardDB {
 
   // other
   /**
-   * Issue a card for user generating a 10 digit unique id
+   * Issue a card for user generating a 10 digit unique id.
    *
    * @param displayName user's name ready to print
    * @param blazerID user's id code
    * @param typeCode type of user based on adding values: 1 - student 2 -
-   * faculty 4 - employee where a visitor will have typeCode 0
+   *     faculty 4 - employee where a visitor will have typeCode 0
    *
    * @return ecard or null if no MAX_RECORDS ecards have already been issued
    */
