@@ -12,12 +12,19 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  * @author David G. Green dgreen@uab.edu
  */
 public class ECardDB {
+    
+    private static final int MAX_RECORDS = 100;
 
+    private ECardRecord records[];
+    private int numberRecords;
+    
     /**
      * Make an ECardDB object
+     * Limited to MAX_RECORDS cards
      */
     public ECardDB() {
-
+        records = new ECardRecord[MAX_RECORDS];
+        numberRecords = 0;
     }
 
     // queries
@@ -28,7 +35,16 @@ public class ECardDB {
      * @return eCardRecord corresponding to the card if valid, null otherwise
      */
     public ECardRecord validate(final ECard ecard) {
-        return null;
+        for(int i = 0; i < numberRecords; i++) {
+            if (records[i].isMatch(ecard)) {
+                if (records[i].isCancelled()) {
+                    return null;
+                } else {
+                    return records[i];                
+                }
+            }
+        }
+        return null;        // did not find one
     }
 
     // commands
@@ -39,7 +55,11 @@ public class ECardDB {
      * @param UID uid to match
      */
     public void cancel(final long UID) {
-
+        for(int i = 0; i < numberRecords; i++) {
+            if (records[i].isMatch(UID)) {
+                records[i].cancel();
+            }
+        }
     }
 
     /**
@@ -49,23 +69,35 @@ public class ECardDB {
      * @param blazerID BlazerID to match
      */
     public void cancel(final String blazerID) {
+        for(int i = 0; i < numberRecords; i++) {
+            if (blazerID.equals(records[i].getBlazerID())) {
+                records[i].cancel();
+            }
+        }
 
     }
 
     // other
     /**
-     * Issue a card base for user generating a 10 digit unique id
+     * Issue a card for user generating a 10 digit unique id
      *
      * @param displayName user's name ready to print
      * @param blazerID user's id code
      * @param typeCode type of user based on adding values: 1 - student 2 -
      * faculty 4 - employee where a visitor will have typeCode 0
-     * @return
+     * 
+     * @return ecard or null if no MAX_RECORDS ecards have already been issued
      */
     public ECard issueCard(final String displayName, final String blazerID,
             final int typeCode) {
+        
+        if (numberRecords >= MAX_RECORDS) {
+            return null;
+        }
 
-        return null;
+        ECard card = new ECard();
+        ECardRecord record = new ECardRecord(card, displayName, blazerID, typeCode);
+        records[numberRecords++] = record;
+        return card;
     }
-
 }

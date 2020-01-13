@@ -12,12 +12,15 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  * @author David G. Green dgreen@uab.edu
  */
 public class ECard {
+    
+    private static long counter = 1000000000L;
+    private final long UID;
 
     /**
      * Create a card assigning it a unique 10 digit code
      */
     public ECard() {
-
+        UID = counter++;
     }
 
     /**
@@ -26,7 +29,7 @@ public class ECard {
      * @return the card's code
      */
     public long getCode() {
-        return 0;
+        return UID;
     }
 
 }
