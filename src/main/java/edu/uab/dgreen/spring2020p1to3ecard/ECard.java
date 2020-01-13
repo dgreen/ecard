@@ -13,23 +13,23 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  */
 public class ECard {
 
-    private static long counter = 1000000000L;
-    private final long UID;
+  private static long counter = 1000000000L;
+  private final long UID;
 
-    /**
-     * Create a card assigning it a unique 10 digit code
-     */
-    public ECard() {
-        UID = counter++;
-    }
+  /**
+   * Create a card assigning it a unique 10 digit code
+   */
+  public ECard() {
+    UID = counter++;
+  }
 
-    /**
-     * Return the code for this card
-     *
-     * @return the card's code
-     */
-    public long getCode() {
-        return UID;
-    }
+  /**
+   * Return the code for this card
+   *
+   * @return the card's code
+   */
+  public long getCode() {
+    return UID;
+  }
 
 }
