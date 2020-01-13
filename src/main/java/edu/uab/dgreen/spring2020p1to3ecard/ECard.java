@@ -14,11 +14,9 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 public class ECard {
 
     /**
-     * Create a card with a specific code
-     *
-     * @param code the card's code
+     * Create a card assigning it a unique 10 digit code
      */
-    public ECard(long code) {
+    public ECard() {
 
     }
 
