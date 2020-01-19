@@ -2,6 +2,7 @@
  * File: TestP1.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.1.0 01/18/2020 dgg - modify to work with singleton ECardDB
  * Vers: 1.0.0 01/12/2020 dgg - initial coding
  */
 
@@ -23,7 +24,7 @@ public class TestP1 {
     println("TestP1");
 
     // Make a ECardDB to use
-    ECardDB db = new ECardDB();
+    ECardDB db = ECardDB.getInstance();
 
     ECard ec1 = db.issueCard("First Student", "stu1", 1);
     ECard ec2 = db.issueCard("Second Faculty/Employee", "fac2", 6);

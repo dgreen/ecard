@@ -2,6 +2,7 @@
  * File: ECardDB.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.1.0 01/20/2020 dgg - convert to singleton
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
 
@@ -22,10 +23,23 @@ public class ECardDB {
   /**
    * Make an ECardDB object Limited to MAX_RECORDS cards.
    */
-  public ECardDB() {
+  private ECardDB() {
     records = new ECardRecord[MAX_RECORDS];
     numberRecords = 0;
   }
+
+  /**
+   * Allow one to get the (only) ECardDB server.
+   * @return reference to ECardDB server.
+   */
+  public static ECardDB getInstance() {
+    return ECardDBHolder.INSTANCE;
+  }
+
+  private static class ECardDBHolder {
+    private static final ECardDB INSTANCE = new ECardDB();
+  }
+
 
   // queries
   /**
