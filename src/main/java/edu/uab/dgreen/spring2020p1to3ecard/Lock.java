@@ -35,12 +35,13 @@ public class Lock extends AuthPoint {
 
   /**
    * Called by the above validate method when a card is successfully validated.
-   * Issue unlock, Show Green, Wait, Issue Lock, Turn off lights.  (simulated with log entries)
+   * It will grant access if supplied blazerID is in access list.
    *
-   * @param blazerID - blazerID of card being granted access
+   * @param blazerID - blazerid of authenticated card
+   * @return true if access granted otherwise false
    */
   @Override
-  protected void valid(final String blazerID) {
+  protected boolean valid(final String blazerID) {
     if (accessList.contains(blazerID)) {
 
       // allow user access if on access list
@@ -49,10 +50,12 @@ public class Lock extends AuthPoint {
       log(blazerID, "Waiting access time");
       log(blazerID, "Lock");
       log(blazerID, "Green light off");
+      return true;
     } else {
 
       // deny access to user if not on access list
       invalid(blazerID);
+      return false;
     }
   }
 

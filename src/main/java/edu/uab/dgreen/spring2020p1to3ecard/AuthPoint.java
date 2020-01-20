@@ -27,7 +27,7 @@ public abstract class AuthPoint {
    * inValid().
    *
    * @param ecard an ECard to use for validation
-   * @return true if validation was successful and false otherwise.
+   * @return true if validation/access was successful and false otherwise.
    */
   public boolean validate(ECard ecard) {
     ECardRecord record = ECardDB.getInstance().validate(ecard);
@@ -35,8 +35,7 @@ public abstract class AuthPoint {
       invalid("" + ecard.getCode());
       return false;
     } else {
-      valid(record.getBlazerID());
-      return true;
+      return valid(record.getBlazerID());
     }
   }
 
@@ -52,8 +51,9 @@ public abstract class AuthPoint {
   /**
    * Called by the above validate method when a card is successfully validated.
    * @param blazerID - blazerid of card being granted access
+   * @return true if access granted otherwise false
    */
-  protected abstract void valid(String blazerID);
+  protected abstract boolean valid(String blazerID);
 
   /**
    * Called by the above validate method when a card is not validated when presented.

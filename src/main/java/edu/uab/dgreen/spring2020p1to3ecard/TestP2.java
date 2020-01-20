@@ -2,7 +2,7 @@
  * File: TestP2.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
- * Vers: 1.0.0 01/18/2020 dgg - initial coding
+ * Vers: 1.0.0 01/20/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
