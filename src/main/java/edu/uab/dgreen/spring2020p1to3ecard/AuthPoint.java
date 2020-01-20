@@ -60,7 +60,14 @@ public abstract class AuthPoint {
    *
    * @param cardCode - card code not being granted access
    */
-  protected abstract void invalid(String cardCode);
+  protected abstract void invalid(long cardCode);
+
+  /**
+   * Called by the above validate method when a card is not validated when presented.
+   *
+   * @param blazerID - user not being granted access
+   */
+  protected abstract void invalid(String blazerID);
 
   /**
    * Reset the system.  Would, at least, turn off any alarming.

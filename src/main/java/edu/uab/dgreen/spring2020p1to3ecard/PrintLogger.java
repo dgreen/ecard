@@ -7,7 +7,7 @@
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
-public class PrintLogger {
+public class PrintLogger implements ECardLogger {
 
   /**
    * Log message with blazerid and message to stdout.

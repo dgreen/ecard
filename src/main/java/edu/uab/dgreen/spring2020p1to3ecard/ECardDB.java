@@ -33,10 +33,10 @@ public class ECardDB {
    * @return reference to ECardDB server.
    */
   public static ECardDB getInstance() {
-    return ECardDBHolder.INSTANCE;
+    return ECardDbHolder.INSTANCE;
   }
 
-  private static class ECardDBHolder {
+  private static class ECardDbHolder {
     private static final ECardDB INSTANCE = new ECardDB();
   }
 

@@ -7,15 +7,19 @@
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
+import java.util.ArrayList;
+
 public class Lock extends AuthPoint {
 
   private boolean alarming = false;        // whether alarming is occuring
+  private ArrayList<String> accessList;
 
   /**
    * Create a lock.
    */
   public Lock() {
     super();
+    accessList = new ArrayList<>();
   }
 
   /**
@@ -37,24 +41,53 @@ public class Lock extends AuthPoint {
    */
   @Override
   protected void valid(final String blazerID) {
-    log(blazerID, "Unlock");
-    log(blazerID, "Green light on");
-    log(blazerID, "Waiting access time");
-    log(blazerID, "Lock");
-    log(blazerID, "Green light off");
+    if (accessList.contains(blazerID)) {
+
+      // allow user access if on access list
+      log(blazerID, "Unlock");
+      log(blazerID, "Green light on");
+      log(blazerID, "Waiting access time");
+      log(blazerID, "Lock");
+      log(blazerID, "Green light off");
+    } else {
+
+      // deny access to user if not on access list
+      invalid(blazerID);
+    }
+  }
+
+  /**
+   * Called directly by the above access method when a card is validated but
+   * does have access permission.  Signal deny access.
+   * Issue deny access.
+   *
+   * @param blazerID - blazerID not being granted access
+   */
+  @Override
+  protected void invalid(final String blazerID) {
+    deny(blazerID);
   }
 
   /**
    * Called by the above validate method when a card is not validated when presented.
-   * Issue "Red", "Wait", "Turn off Red".  (Simulated with log entries)
+   * Signal deny access.
    *
-   * @param cardCode - card code not being granted access
+   * @param code - card code not being granted access
    */
   @Override
-  protected void invalid(final String cardCode) {
-    log(cardCode, "Red light on");
-    log(cardCode, "Waiting access time");
-    log(cardCode, "Red light off");
+  protected void invalid(final long code) {
+    deny("" + code);
+  }
+
+  /*
+   * Issue "Red", "Wait", "Turn off Red".  (Simulated with log entries)
+   *
+   * @param text - text related to user/card not being granted access
+   */
+  private void deny(final String text) {
+    log(text, "Red light on");
+    log(text, "Waiting display time");
+    log(text, "Red light off");
   }
 
   /**
@@ -75,6 +108,15 @@ public class Lock extends AuthPoint {
   public void alarm() {
     alarming = true;
     log("", "Alarming");
+  }
+
+  /**
+   * Add a blazerID to the access list.
+   *
+   * @param blazerID the user to allow access to this lock
+   */
+  public void add(final String blazerID) {
+    accessList.add(blazerID);
   }
 
 }
