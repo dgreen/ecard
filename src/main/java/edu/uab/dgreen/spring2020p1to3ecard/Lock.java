@@ -41,7 +41,9 @@ public class Lock extends AuthPoint {
    * @return true if access granted otherwise false
    */
   @Override
-  protected boolean valid(final String blazerID) {
+  protected boolean valid(final ECardRecord ecr) {
+    String blazerID = ecr.getBlazerID();
+
     if (accessList.contains(blazerID)) {
 
       // allow user access if on access list

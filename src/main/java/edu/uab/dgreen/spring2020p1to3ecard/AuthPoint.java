@@ -2,7 +2,7 @@
  * File: AuthPoint.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
- * Vers: 1.0.0 01/18/2020 dgg - initial coding
+ * Vers: 1.0.1 01/24/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
@@ -35,7 +35,7 @@ public abstract class AuthPoint {
       invalid("" + ecard.getCode());
       return false;
     } else {
-      return valid(record.getBlazerID());
+      return valid(record);
     }
   }
 
@@ -50,10 +50,10 @@ public abstract class AuthPoint {
 
   /**
    * Called by the above validate method when a card is successfully validated.
-   * @param blazerID - blazerid of card being granted access
+   * @param ecr - record of card being granted access
    * @return true if access granted otherwise false
    */
-  protected abstract boolean valid(String blazerID);
+  protected abstract boolean valid(ECardRecord ecr);
 
   /**
    * Called by the above validate method when a card is not validated when presented.
