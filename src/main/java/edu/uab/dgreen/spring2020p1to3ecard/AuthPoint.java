@@ -2,13 +2,17 @@
  * File: AuthPoint.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
- * Vers: 1.0.1 01/25/2020 dgg - initial coding
+ * Vers: 1.0.2 01/25/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import java.util.ArrayList;
 
+/**
+ * An abstract model for an authentication point.
+ * @author David G Green DGreen@uab.edu
+ */
 public abstract class AuthPoint {
 
   private String location = "no location";       // location of this authPoint
@@ -101,6 +105,8 @@ public abstract class AuthPoint {
 
   /**
    * As a service to subclasses, send message out to all registered loggers.
+   * @param blazerID userid
+   * @param message text to display in log
    */
   protected void log(final String blazerID, final String message) {
     for (final ECardLogger ecardLogger : loggers) {

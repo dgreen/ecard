@@ -2,13 +2,17 @@
  * File: Lock.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
- * Vers: 1.0.0 01/18/2020 dgg - initial coding
+ * Vers: 1.0.1 01/25/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import java.util.ArrayList;
 
+/**
+ * A lock (like a door lock) that controls access through a lock mechanism.
+ * @author dgreen
+ */
 public class Lock extends AuthPoint {
 
   private boolean alarming = false;        // whether alarming is occuring
@@ -37,7 +41,6 @@ public class Lock extends AuthPoint {
    * Called by the above validate method when a card is successfully validated.
    * It will grant access if supplied blazerID is in access list.
    *
-   * @param blazerID - blazerid of authenticated card
    * @return true if access granted otherwise false
    */
   @Override
