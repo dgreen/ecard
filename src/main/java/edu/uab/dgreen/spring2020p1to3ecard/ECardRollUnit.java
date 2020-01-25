@@ -68,21 +68,7 @@ public class ECardRollUnit extends AuthPoint {
   protected void invalid(String blazerID) {
     log(blazerID, "Red Light Flash");
   }
-
-  /**
-   * Reset the system.  Would, at least, turn off any alarming. (unused)
-   */
-  protected void reset() {
-
-  }
-
-  /**
-   * Activate any contained alarm.  (unused)
-   */
-  public void alarm() {
-
-  }
-
+ 
   /**
    * Print a attendance list.
    * The output will be blazerID, count per line
@@ -121,5 +107,4 @@ public class ECardRollUnit extends AuthPoint {
       logger.log(bid, "" + count);
     }
   }
-
 }

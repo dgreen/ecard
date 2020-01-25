@@ -19,6 +19,7 @@ public class ECard {
 
   /**
    * Create a card assigning it a unique 10 digit code.
+   * Cards with leading 0's are not used.
    */
   public ECard() {
     uid = counter++;

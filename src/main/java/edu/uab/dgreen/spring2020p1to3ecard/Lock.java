@@ -99,7 +99,7 @@ public class Lock extends AuthPoint {
    * Reset the system. Would, at least, turn off any alarming.
    */
   @Override
-  protected void reset() {
+  public void reset() {
     if (alarming) {
       log("", "Alarm off");
       alarming = false;

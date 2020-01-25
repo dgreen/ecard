@@ -71,13 +71,21 @@ public abstract class AuthPoint {
 
   /**
    * Reset the system.  Would, at least, turn off any alarming.
+   * 
+   * (No action unless overridden.)
    */
-  protected abstract void reset();
+  public void reset() {
+    
+  }
 
   /**
-   * Activate any contained alarm.
+   * Activate any contained alarm. 
+   * 
+   * (No action unless overridden.)
    */
-  public abstract void alarm();
+  public void alarm() {
+    
+  }
 
   /**
    * Add an logger to the authpoint.  Each logger will be called for events that are
