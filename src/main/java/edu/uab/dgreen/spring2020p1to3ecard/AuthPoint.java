@@ -1,4 +1,4 @@
-/**
+/*
  * File: AuthPoint.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
