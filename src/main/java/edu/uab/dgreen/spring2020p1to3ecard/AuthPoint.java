@@ -2,7 +2,7 @@
  * File: AuthPoint.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
- * Vers: 1.0.1 01/24/2020 dgg - initial coding
+ * Vers: 1.0.1 01/25/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
@@ -71,13 +71,21 @@ public abstract class AuthPoint {
 
   /**
    * Reset the system.  Would, at least, turn off any alarming.
+   * 
+   * (No action unless overridden.)
    */
-  protected abstract void reset();
+  protected void reset(){
+    
+  }
 
   /**
    * Activate any contained alarm.
+   * 
+   * (No action unless overridden.)
    */
-  public abstract void alarm();
+  public void alarm() {
+    
+  }
 
   /**
    * Add an logger to the authpoint.  Each logger will be called for events that are
