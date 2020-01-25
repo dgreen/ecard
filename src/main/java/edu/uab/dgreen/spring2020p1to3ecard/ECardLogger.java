@@ -7,6 +7,10 @@
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
+/**
+ * An interface describing a logging function for ECard system components to use
+ * @author dgreen
+ */
 public interface ECardLogger {
 
   /**

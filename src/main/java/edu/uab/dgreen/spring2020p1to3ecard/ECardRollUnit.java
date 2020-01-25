@@ -9,6 +9,10 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 
 import java.util.ArrayList;
 
+/**
+ * A unit to roll in class
+ * @author dgreen
+ */
 public class ECardRollUnit extends AuthPoint {
 
   private String day = "unknown day";
@@ -35,7 +39,6 @@ public class ECardRollUnit extends AuthPoint {
 
   /**
    * Called by the above validate method when a card is successfully validated.
-   * @param blazerID - blazerid of card being granted access
    * @return true if access granted otherwise false
    */
   protected boolean valid(ECardRecord ecr) {

@@ -7,6 +7,10 @@
 
 package edu.uab.dgreen.spring2020p1to3ecard;
 
+/**
+ * A ECard logger which outputs to stdout.
+ * @author dgreen
+ */
 public class PrintLogger implements ECardLogger {
 
   /**

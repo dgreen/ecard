@@ -9,6 +9,10 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 
 import java.util.ArrayList;
 
+/**
+ * An abstract model for an authentication point.
+ * @author dgreen
+ */
 public abstract class AuthPoint {
 
   private String location = "no location";       // location of this authPoint
@@ -101,6 +105,8 @@ public abstract class AuthPoint {
 
   /**
    * As a service to subclasses, send message out to all registered loggers.
+   * @param blazerID userid
+   * @param message text to display in log
    */
   protected void log(final String blazerID, final String message) {
     for (final ECardLogger ecardLogger : loggers) {

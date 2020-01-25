@@ -9,6 +9,10 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 
 import java.util.ArrayList;
 
+/**
+ * A lock (like a door lock) that controls access through a lock mechanism.
+ * @author dgreen
+ */
 public class Lock extends AuthPoint {
 
   private boolean alarming = false;        // whether alarming is occuring
@@ -34,10 +38,8 @@ public class Lock extends AuthPoint {
   }
 
   /**
-   * Called by the above validate method when a card is successfully validated.
-   * It will grant access if supplied blazerID is in access list.
+   * Called by the above validate method when a card is successfully validated.It will grant access if supplied blazerID is in access list.
    *
-   * @param blazerID - blazerid of authenticated card
    * @return true if access granted otherwise false
    */
   @Override
