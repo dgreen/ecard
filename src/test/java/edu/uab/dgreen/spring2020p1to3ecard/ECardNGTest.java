@@ -9,6 +9,7 @@
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,8 +20,8 @@ import org.testng.annotations.Test;
  */
 public class ECardNGTest {
 
-    public ECardNGTest() {
-    }
+  public ECardNGTest() {
+  }
 
   @BeforeMethod
   public void setUpMethod() throws Exception {

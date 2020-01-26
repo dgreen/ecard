@@ -4,27 +4,29 @@
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/25/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- *
+ * Test ECardDBNG.
  * @author David G Green DGreen@uab.edu
  */
 public class ECardDBNGTest {
 
   ECardDB ecdb1;
   ECardDB ecdb2;
-  
+
   ECard ec1;
   ECard ec2;
   ECard ec3;
   ECard invalid;
-  
+
   public ECardDBNGTest() {
   }
 
@@ -32,7 +34,7 @@ public class ECardDBNGTest {
   public void setUpMethod() throws Exception {
     ecdb1 = ECardDB.getInstance();
     ecdb2 = ECardDB.getInstance();
-    
+
     ec1 = ecdb1.issueCard("Joe Student", "stu1", 1);
     ec2 = ecdb1.issueCard("Jill Faculty", "fac2", 6);
     ec3 = ecdb1.issueCard("Adeem Visitor", "vis1", 0);
@@ -44,8 +46,8 @@ public class ECardDBNGTest {
 
   /**
    * Test of getInstance method, of class ECardDB.
-   * 
-   * Verify all calls get same object.
+   *
+   * <p>Verify all calls get same object.
    */
   @Test
   public void testGetInstance() {
@@ -61,7 +63,7 @@ public class ECardDBNGTest {
     assertTrue(ecdb1.validate(ec2) != null);
     assertTrue(ecdb1.validate(ec3) != null);
     assertTrue(ecdb1.validate(new ECard()) == null);
-    
+
     ECardRecord ecr1 = ecdb1.validate(ec1);
     assertEquals(ecr1.getBlazerID(), "stu1");
     assertEquals(ecr1.getDisplayName(), "Joe Student");
@@ -77,11 +79,11 @@ public class ECardDBNGTest {
    */
   @Test
   public void testCancel_long() {
-    
+
     assertTrue(ecdb1.validate(ec1) != null);
-    
+
     ecdb1.cancel(ec1.getCode());
-    
+
     assertTrue(ecdb1.validate(ec1) == null);
   }
 
@@ -90,11 +92,11 @@ public class ECardDBNGTest {
    */
   @Test
   public void testCancel_String() {
-    
+
     assertTrue(ecdb1.validate(ec2) != null);
-    
+
     ecdb1.cancel("fac2");
-    
+
     assertTrue(ecdb1.validate(ec2) == null);
   }
 
@@ -103,9 +105,9 @@ public class ECardDBNGTest {
    */
   @Test
   public void testIssueCard() {
- 
+
     // no additional tests seem to be needed at this time.
-  
+
   }
 
 }

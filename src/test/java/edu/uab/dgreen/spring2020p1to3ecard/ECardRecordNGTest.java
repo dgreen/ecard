@@ -4,15 +4,17 @@
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
  * Vers: 1.0.0 01/25/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Test the ECardRecord model
+ * Test the ECardRecord model.
  * @author David G Green DGreen@uab.edu
  */
 public class ECardRecordNGTest {
@@ -51,21 +53,21 @@ public class ECardRecordNGTest {
     assertTrue(ecr1.isMatch(ec1));
     assertTrue(ecr2.isMatch(ec2));
     assertTrue(ecr3.isMatch(ec3));
-    
+
     assertFalse(ecr1.isMatch(ec2));
     assertFalse(ecr1.isMatch(ec3));
 
     assertFalse(ecr2.isMatch(ec1));
     assertFalse(ecr2.isMatch(ec3));
-    
+
     assertFalse(ecr3.isMatch(ec1));
     assertFalse(ecr3.isMatch(ec2));
   }
 
   /**
    * Test of isMatch method, of class ECardRecord.
-   * 
-   * Note that we can't predict the codes for ec1, ec2, ec3
+   *
+   * <p>Note that we can't predict the codes for ec1, ec2, ec3
    * as they are generated for each test and we do not
    * know the order the test will be run.
    */
@@ -74,19 +76,19 @@ public class ECardRecordNGTest {
     long ec1Code = ec1.getCode();
     long ec2Code = ec2.getCode();
     long ec3Code = ec3.getCode();
-    
+
     assertTrue(ecr1.isMatch(ec1Code));
     assertTrue(ecr2.isMatch(ec2Code));
     assertTrue(ecr3.isMatch(ec3Code));
-    
+
     assertFalse(ecr1.isMatch(ec2Code));
     assertFalse(ecr1.isMatch(ec3Code));
 
     assertFalse(ecr2.isMatch(ec1Code));
     assertFalse(ecr2.isMatch(ec3Code));
-    
+
     assertFalse(ecr3.isMatch(ec1Code));
-    assertFalse(ecr3.isMatch(ec2Code));    
+    assertFalse(ecr3.isMatch(ec2Code));
   }
 
   /**
