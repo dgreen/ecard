@@ -9,7 +9,6 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,6 +28,12 @@ public class ECardDBNGTest {
 
   public ECardDBNGTest() {
   }
+  /**
+   * Set up environment for a test by creating two Databases (only one is used)
+   * and three ecards.
+   *
+   * @throws Exception generalized exception (none anticipated)
+   */
 
   @BeforeMethod
   public void setUpMethod() throws Exception {
@@ -38,10 +43,6 @@ public class ECardDBNGTest {
     ec1 = ecdb1.issueCard("Joe Student", "stu1", 1);
     ec2 = ecdb1.issueCard("Jill Faculty", "fac2", 6);
     ec3 = ecdb1.issueCard("Adeem Visitor", "vis1", 0);
-  }
-
-  @AfterMethod
-  public void tearDownMethod() throws Exception {
   }
 
   /**

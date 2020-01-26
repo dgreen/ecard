@@ -30,6 +30,13 @@ public class ECardRecordNGTest {
   public ECardRecordNGTest() {
   }
 
+  /**
+   * Set up environment for a test by creating three ecards and three
+   * corresponding records.
+   *
+   * @throws Exception generalized exception (none anticipated)
+   */
+
   @BeforeMethod
   public void setUpMethod() throws Exception {
     ec1 = new ECard();

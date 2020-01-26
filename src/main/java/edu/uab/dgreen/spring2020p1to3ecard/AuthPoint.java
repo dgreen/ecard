@@ -75,20 +75,20 @@ public abstract class AuthPoint {
 
   /**
    * Reset the system.  Would, at least, turn off any alarming.
-   * 
-   * (No action unless overridden.)
+   *
+   * <p>(No action unless overridden.)
    */
   public void reset() {
-    
+
   }
 
   /**
-   * Activate any contained alarm. 
-   * 
-   * (No action unless overridden.)
+   * Activate any contained alarm.
+   *
+   * <p>(No action unless overridden.)
    */
   public void alarm() {
-    
+
   }
 
   /**
