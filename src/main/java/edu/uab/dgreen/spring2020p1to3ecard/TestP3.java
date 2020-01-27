@@ -2,6 +2,7 @@
  * File: TestP3.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.1.0 01/27/2020 dgg - change to use faculty card to change course
  * Vers: 1.0.0 01/24/2020 dgg - initial coding
  */
 
@@ -30,17 +31,18 @@ public class TestP3 {
     ECardRollUnit eru = new ECardRollUnit();
     eru.initialize("bec267");
     eru.add(logger);
+
+    final ECard ec1 = db.issueCard("First Student", "stu1", 1);
+    final ECard ec2 = db.issueCard("Second Student employee", "stu2", 5);
+    final ECard ec3 = db.issueCard("Faculty member", "fac1", 2);
+    final ECard ecUnknown = new ECard();
+
+    printTestResult(eru.validate(ec3), "appears fac1 course change possible.");
     eru.setCourse("ee333");
     eru.setDay("20200121");
 
-    ECard ec1 = db.issueCard("First Student", "stu1", 1);
-    ECard ec2 = db.issueCard("Second Student employee", "stu2", 5);
-    ECard ec3 = db.issueCard("Faculty member", "fac1", 0);
-    ECard ecUnknown = new ECard();
-
     printTestResult(eru.validate(ec2), "appears stu2 logged.");
     printTestResult(eru.validate(ec1), "appears stu1 logged.");
-    printTestResult(!eru.validate(ec3), "appears afac1 not allowed.");
     printTestResult(!eru.validate(ecUnknown), "appears unknown card not allowed");
 
     eru.setDay("20200128");

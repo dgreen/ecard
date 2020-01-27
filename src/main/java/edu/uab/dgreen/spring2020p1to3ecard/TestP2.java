@@ -42,10 +42,10 @@ public class TestP2 {
     lock2.add("vis1");
     lock2.add(logger);
 
-    ECard ec1 = db.issueCard("First Student", "stu1", 1);
-    ECard ec2 = db.issueCard("Second Faculty/Employee", "fac2", 6);
-    ECard ec3 = db.issueCard("Third visitor", "vis1", 0);
-    ECard ecUnknown = new ECard();
+    final ECard ec1 = db.issueCard("First Student", "stu1", 1);
+    final ECard ec2 = db.issueCard("Second Faculty/Employee", "fac2", 6);
+    final ECard ec3 = db.issueCard("Third visitor", "vis1", 0);
+    final ECard ecUnknown = new ECard();
 
     printTestResult(lock1.validate(ec1), "Appears to have allowed access with stu1 at lock1loc");
     printTestResult(lock1.validate(ec2), "Appears to have allowed access with fac2 at lock1loc");

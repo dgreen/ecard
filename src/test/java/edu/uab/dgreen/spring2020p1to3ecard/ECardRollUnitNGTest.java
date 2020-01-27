@@ -2,17 +2,20 @@
  * File: ECardRollUnitNGTest.java
  * Author: David G Green DGreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.1.0 01/25/2020 dgg - require faculty card to change course
  * Vers: 1.0.0 01/25/2020 dgg - initial coding
  */
+
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- *
+ * Test ECard Roll Unit.
  * @author David G Green DGreen@uab.edu
  */
 public class ECardRollUnitNGTest {
@@ -32,6 +35,12 @@ public class ECardRollUnitNGTest {
   public ECardRollUnitNGTest() {
   }
 
+  /**
+   * Set up before each test: create db, create cards, create roll units,
+   * set up logger.
+   *
+   * @throws Exception (general exception not used)
+   */
   @BeforeMethod
   public void setUpMethod() throws Exception {
     ecdb = ECardDB.getInstance();
@@ -100,11 +109,41 @@ public class ECardRollUnitNGTest {
   }
 
   /**
+   * Test to see that faculty card required to
+   * change course in ECard Roll Unit.
+   */
+
+  @Test
+  public void testSetCourse() {
+    assertTrue(ecru1.validate(ec2));            // faculty
+    ecru1.setCourse("EE333");
+
+    assertEquals(ecru1.getCourse(), "EE333");
+    ecru1.setCourse("EE447");
+    assertEquals(ecru1.getCourse(), "EE447");
+    ecru1.setCourse("EE333");
+    assertEquals(ecru1.getCourse(), "EE333");
+
+    assertTrue(ecru1.validate(ec1));            // student
+    ecru1.setCourse("EE447");
+    assertEquals(ecru1.getCourse(), "EE333");
+
+    assertTrue(ecru1.validate(ec3) == false);   // visitor
+    ecru1.setCourse("EE447");
+    assertEquals(ecru1.getCourse(), "EE333");
+
+    assertTrue(ecru1.validate(ec2));
+    ecru1.setCourse("EE447");
+    assertEquals(ecru1.getCourse(), "EE447");
+  }
+
+  /**
    * Test of courseRoll method, of class ECardRollUnit.
    */
   @Test
   public void testCourseRoll() {
 
+    ecru1.validate(ec2);          // faculty card to allow course change
     ecru1.setCourse("ee333");
     ecru1.setDay("20200121");
     assertTrue(ecru1.validate(ec4));
@@ -119,10 +158,12 @@ public class ECardRollUnitNGTest {
     ecru1.courseRoll("ee333", rollReport);
     assertEquals(rollReport.extractLog(), expected1);
 
+    ecru1.validate(ec2);         // faculty card
     ecru1.setCourse("ee499");
     assertTrue(ecru1.validate(ec4));
 
     ecru1.setDay("20200128");
+    ecru1.validate(ec2);         // faculty card
     ecru1.setCourse("ee333");
     assertTrue(ecru1.validate(ec4));
 

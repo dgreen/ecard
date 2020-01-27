@@ -10,7 +10,7 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 import java.util.ArrayList;
 
 /**
- * A unit to roll in class
+ * A unit to roll in class.
  * @author dgreen
  */
 public class ECardRollUnit extends AuthPoint {
@@ -18,6 +18,7 @@ public class ECardRollUnit extends AuthPoint {
   private String day = "unknown day";
   private String course = "unknown course";
   private ArrayList<RollRecord> present = new ArrayList<>();
+  private boolean lastCardFac = false;
 
   /**
    * Set day.
@@ -29,29 +30,56 @@ public class ECardRollUnit extends AuthPoint {
   }
 
   /**
-   *  Set course.
+   * Set course (if last card validated was faculty card).
    *
-   * @param course string to log course (used till changed)
+   * @param course string to log course (used till changed).
+   *
    */
   public void setCourse(String course) {
-    this.course = course;
+    if (lastCardFac) {
+      this.course = course;
+    }
+  }
+
+  /**
+   * Get the current course.
+   *
+   * @returns String course name
+   */
+  public String getCourse() {
+    return course;
   }
 
   /**
    * Called by the above validate method when a card is successfully validated.
-   * @return true if access granted otherwise false
+   * To be valid it must be a valid card, be either a student or faculty card.
+   *
+   * @return true if valid (for roll, or faculty) otherwise false
    */
   protected boolean valid(ECardRecord ecr) {
     String blazerID = ecr.getBlazerID();
+    boolean valid = false;
 
     if (ecr.isStudent()) {
       present.add(new RollRecord(course, day, blazerID));
       log(blazerID, "Green Light Flash");
-      return true;
-    } else {
+      valid = true;
+    } else if (!ecr.isFaculty()) {
       invalid(blazerID);
-      return false;
+      valid = false;
     }
+
+    if (ecr.isFaculty()) {
+      log(blazerID, "Green Light On");
+      log(blazerID, "long delay");
+      log(blazerID, "Green Light Off");
+      lastCardFac = true;
+      valid = true;
+    } else {
+      lastCardFac = false;
+    }
+
+    return valid;
   }
 
   /**
@@ -71,7 +99,7 @@ public class ECardRollUnit extends AuthPoint {
   protected void invalid(String blazerID) {
     log(blazerID, "Red Light Flash");
   }
- 
+
   /**
    * Print a attendance list.
    * The output will be blazerID, count per line
