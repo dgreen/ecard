@@ -2,11 +2,14 @@
  * File: ECardDB.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.2.0 01/28/2020 dgg - change to arraylist (from array)
  * Vers: 1.1.0 01/20/2020 dgg - convert to singleton
  * Vers: 1.0.0 01/11/2020 dgg - initial coding
  */
 
 package edu.uab.dgreen.spring2020p1to3ecard;
+
+import java.util.ArrayList;
 
 /**
  * Model a system to issue cards, validate them, and provide info on owner.
@@ -15,17 +18,13 @@ package edu.uab.dgreen.spring2020p1to3ecard;
  */
 public class ECardDB {
 
-  private static final int MAX_RECORDS = 100;
-
-  private ECardRecord[] records;
-  private int numberRecords;
+  private ArrayList<ECardRecord> records;
 
   /**
-   * Make an ECardDB object Limited to MAX_RECORDS cards.
+   * Make an ECardDB object.
    */
   private ECardDB() {
-    records = new ECardRecord[MAX_RECORDS];
-    numberRecords = 0;
+    records = new ArrayList<>();
   }
 
   /**
@@ -49,12 +48,12 @@ public class ECardDB {
    * @return eCardRecord corresponding to the card if valid, null otherwise
    */
   public ECardRecord validate(final ECard ecard) {
-    for (int i = 0; i < numberRecords; i++) {
-      if (records[i].isMatch(ecard)) {
-        if (records[i].isCancelled()) {
+    for (ECardRecord eCardRecord : records) {
+      if (eCardRecord.isMatch(ecard)) {
+        if (eCardRecord.isCancelled()) {
           return null;
         } else {
-          return records[i];
+          return eCardRecord;
         }
       }
     }
@@ -69,9 +68,9 @@ public class ECardDB {
    * @param uid UID to match
    */
   public void cancel(final long uid) {
-    for (int i = 0; i < numberRecords; i++) {
-      if (records[i].isMatch(uid)) {
-        records[i].cancel();
+    for (ECardRecord eCardRecord : records) {
+      if (eCardRecord.isMatch(uid)) {
+        eCardRecord.cancel();
       }
     }
   }
@@ -83,12 +82,11 @@ public class ECardDB {
    * @param blazerID BlazerID to match
    */
   public void cancel(final String blazerID) {
-    for (int i = 0; i < numberRecords; i++) {
-      if (blazerID.equals(records[i].getBlazerID())) {
-        records[i].cancel();
+    for (ECardRecord eCardRecord : records) {
+      if (blazerID.equals(eCardRecord.getBlazerID())) {
+        eCardRecord.cancel();
       }
     }
-
   }
 
   // other
@@ -105,13 +103,9 @@ public class ECardDB {
   public ECard issueCard(final String displayName, final String blazerID,
       final int typeCode) {
 
-    if (numberRecords >= MAX_RECORDS) {
-      return null;
-    }
-
     ECard card = new ECard();
     ECardRecord record = new ECardRecord(card, displayName, blazerID, typeCode);
-    records[numberRecords++] = record;
+    records.add(record);
     return card;
   }
 }

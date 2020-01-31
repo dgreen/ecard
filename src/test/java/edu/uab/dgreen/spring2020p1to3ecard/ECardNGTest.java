@@ -5,7 +5,6 @@
  * Vers: 1.0.0 01/25/2020 dgg - initial coding
  */
 
-
 package edu.uab.dgreen.spring2020p1to3ecard;
 
 import static org.testng.Assert.*;
