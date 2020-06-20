@@ -2,6 +2,7 @@
  * File: ECardRollUnit.java
  * Author: David G. Green dgreen@uab.edu
  * Assignment:  spring2020p1to3ecard - EE333 Spring 2020
+ * Vers: 1.0.1 03/06/2020 dgg - update class description
  * Vers: 1.0.0 01/24/2020 dgg - initial coding
  */
 
@@ -10,7 +11,7 @@ package edu.uab.dgreen.spring2020p1to3ecard;
 import java.util.ArrayList;
 
 /**
- * A unit to roll in class.
+ * A unit to take roll in class.
  * @author dgreen
  */
 public class ECardRollUnit extends AuthPoint {

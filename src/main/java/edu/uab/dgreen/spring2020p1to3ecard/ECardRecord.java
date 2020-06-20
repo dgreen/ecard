@@ -77,7 +77,7 @@ public class ECardRecord {
   }
 
   /**
-   * Is this ECard holder a student?
+   * Is this ECard holder a student?.
    *
    * @return true if yes, false if no (or token invalid)
    */
@@ -86,7 +86,7 @@ public class ECardRecord {
   }
 
   /**
-   * Is this ECard holder a faculty member?
+   * Is this ECard holder a faculty member?.
    *
    * @return true if yes, false if no (or token invalid)
    */
@@ -95,7 +95,7 @@ public class ECardRecord {
   }
 
   /**
-   * Is this ECard holder an employee?
+   * Is this ECard holder an employee?.
    *
    * @return true if yes, false if no (or token invalid)
    */
@@ -104,7 +104,7 @@ public class ECardRecord {
   }
 
   /**
-   * Is this ECard holder a visitor?
+   * Is this ECard holder a visitor?.
    *
    * @return true if yes, false if no (or token invalid)
    */
@@ -113,7 +113,7 @@ public class ECardRecord {
   }
 
   /**
-   * Is this card cancelled?
+   * Is this card cancelled?.
    *
    * @return true if cancelled, false otherwise
    */
